@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--================REMIXICON========================  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" crossorigin="">
+    
+    <!-- ================CSS================= -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- =========== JQUERY CDN LINK============  -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+    integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyoB+bWve9Eio7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <!-- ===============AOS Animation====================== -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <title>Basketo || Grocery Website</title>
+</head>
+<body>
+    <!-- ====================HEADER==================================== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                <span class="nav__logo-circle"><i class="ri-shopping-cart-line"></i></span>
+                <span class="nav__logo-name">Basketo</span>
+            </a>
+
+            <div class="nav__search" id="nav-search">
+                <input type="text" class="nav__search-input" id="search-input" placeholder="Search categories..." >
+                <button class="nav__search-btn" id="search-btn">
+                    <i class="aaa ri-search-line"></i>
+                </button>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <span class="nav__title">Menu</span>
+
+                <h3 class="nav__name">Basketo</h3>
+
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link"><i class="ri-home-8-line"></i>Home</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="list.html" class="nav__link"><i class="ri-money-rupee-circle-line"></i>Budget</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#offers" class="nav__link"><i class="ri-discount-percent-line"></i>Offers</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link"><i class="ri-contacts-line"></i>Contact</a>
+                    </li>
+
+
+                    <li class="nav__item">
+                        <a href="cart.html" class="nav__link">
+                            <i class="ri-shopping-cart-line"></i>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- Close button -->
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+            <div class="nav__buttons">
+
+                <!-- THEME BUTTON -->
+
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+
+                <!-- Toggle buttons -->
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-4-line"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- HOME -->
+        <section class="home section" id="home" style="background-image: url('Images/shopping-cart-full-with-groceries-dark-backgrounds (1).jpg'); background-size: cover; background-position: center;">
+            
+            <div class="home__container container grid">
+                <h1 class="home__name">
+                     Fresh and <span>Organic</span> Products For you
+                </h1>
+
+                <div class="home__perfil">
+                    <!-- <div class="home__image">
+                        <img src="img/Photo - 1.jpg" alt="image" class="home__img">
+                        <div class="home__shadow"></div>
+                    </div> -->
+
+                </div>
+                <div class="home__info">
+                    <a href="#lists" class="home__scroll">
+                        <div class="home__scroll-box">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+
+                        <span class="home__scroll-text"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- services -->
+         
+        <section class="services section" id="lists">
+            <h2 class="section__title-1">
+                <span>Categories.</span>
+            </h2>
+
+            <div class="services__container container grid">
+                <!-- VEGETABLES -->
+                <article class="services__card" id="fresh vegetables">
+                    <a href="vegetables.html">
+
+                
+                        <div class="services__image" data-aos="zoom-in" data-aos-duration="1000">
+                            <img src="Images/i15.jpg" alt="image" class="services__img">
+                        </div>
+
+                        <div class="services__content">
+                            <h2 class="services__title">Fresh Vegetables</h2>
+
+                            <p class="services__description">
+                            Packed with essential vitamins, minerals, and fiber, 
+                            they support overall health and boost the immune system. 
+                            Regular consumption reduces the risk of chronic diseases.
+ 
+                            </p>
+                        </div>
+                    </a>
+                </article>
+
+
+                 <!-- FRUITS -->
+                 <article class="services__card">
+                    <a href="fruits.html">
+                        <div class="services__image" data-aos="zoom-in" data-aos-duration="1000">
+                            <img src="Images/i22.jpg" alt="image" class="services__img">
+                        </div>
+    
+                        <div class="services__content">
+                            <h2 class="services__title">Fruits</h2>
+    
+                            <p class="services__description">
+                                High in vitamins, antioxidants, and 
+                                natural sugars, they boost immunity 
+                                and provide hydration. 
+                            </p>
+                        </div>
+                    </a>   
+                </article>
+
+
+
+                <!-- COOKIES -->
+                <article class="services__card">
+                    <a href="cookies.html">
+                    <div class="services__image" data-aos="zoom-out" data-aos-duration="1000">
+                        <img src="Images/i23.jpg" alt="image" class="services__img">
+                    </div>
+
+                    <div class="services__content">
+                        <h2 class="services__title">Cookies</h2>
+
+                        <p class="services__description">
+                            Convenient snacks that provide quick energy, 
+                            they can also be a source of fiber or protein 
+                            when made with wholesome ingredients.
+ 
+                        </p>
+                    </div>
+                </a>
+                </article>
+
+
+                <article class="services__card">
+                    <a href="icecream.html">
+                    <div class="services__image" data-aos="zoom-in" data-aos-duration="1000">
+                        <img src="Images/Icecream.jpeg" alt="image" class="services__img">
+
+                        
+                    </div>
+
+                    <div class="services__content">
+                        
+                        <h2 class="services__title">Ice Cream</h2>
+
+                        <p class="services__description">
+                            A complete protein source with essential 
+                            nutrients like choline, they aid in muscle building  
+                            and brain health.
+
+
+                        </p>
+                    </div>
+                </a>
+                    
+                </article>
+
+
+                <!-- MEAT  -->
+                <article class="services__card">
+                    <a href="masalas.html">
+                    <div class="services__image" data-aos="zoom-in" data-aos-duration="1000">
+                        <img src="Images/Masalas.jpeg" alt="image" class="services__img">
+                    </div>
+
+                    <div class="services__content">
+
+                        <h2 class="services__title">Masalas</h2>
+
+                        <p class="services__description">
+                            Using masalas enhances the flavor, aroma, 
+                            and color of dishes, making them more 
+                            appealing and delicious.
+ 
+                        </p>
+                    </div>
+                </a>
+                </article>
+
+
+                <!-- CHOCOLATES -->
+                <article class="services__card">
+                    <a href="snacks.html">
+                    <div class="services__image" data-aos="zoom-out" data-aos-duration="1000">
+                        <img src="Images/S.jpeg" alt="image" class="services__img">
+                    </div>
+
+                    <div class="services__content">
+                        <h2 class="services__title">Snacks</h2>
+
+                        <p class="services__description">
+                            Eating snacks can help maintain energy levels 
+                            and curb hunger between meals, preventing 
+                            overeating during main meals. 
+                        </p>
+                    </a>
+                    </div>
+
+                
+                </article>
+
+                <!-- EGGS-->
+                
+
+                <!-- FISH -->
+                <article class="services__card">
+                    <a href="pulses.html">
+                    <div class="services__image" data-aos="zoom-out" data-aos-duration="1000">
+                        <img src="Images/Pulses.jpeg" alt="image" class="services__img">
+
+                        
+                    </div>
+
+                    <div class="services__content">
+                        
+                        <h2 class="services__title">Pulses</h2>
+
+                        <p class="services__description">
+                            Pulses are rich in protein, fiber, 
+                            vitamins, and minerals, making them 
+                            a highly nutritious food.
+ 
+                        </p>
+                    </div>
+                </a>
+                    
+                </article>
+
+                <!-- OIL ITEMS -->
+                <!-- <article class="services__card">
+                    
+                    <div class="services__image" data-aos="zoom-in" data-aos-duration="1000">
+                        <img src="Images/i17.jpg" alt="image" class="services__img">
+
+                       
+                    </div>
+
+                    <div class="services__content">
+                        
+                        <h2 class="services__title">Oil Items</h2>
+
+                        <p class="services__description">
+                            Healthy oils like olive or coconut oil 
+                            provide good fats essential for brain 
+                            function and reducing inflammation.
+ 
+                        </p>
+                    </div>
+
+                    
+                </article> -->
+
+                
+
+
+
+                
+
+
+
+
+                <!-- NUTS -->
+                <article class="services__card">
+                    <a href="nuts.html">
+                    <div class="services__image" data-aos="zoom-out" data-aos-duration="1000">
+                        <img src="Images/i2.jpg" alt="image" class="services__img">
+                    </div>
+
+                    <div class="services__content">
+                        <h2 class="services__title">Nuts</h2>
+
+                        <p class="services__description">
+                            Packed with healthy fats, protein, 
+                            and antioxidants, they improve heart health 
+                            and provide sustained energy.
+
+ 
+                        </p>
+                    </div>
+                </a>
+                </article>
+
+
+
+
+                <article class="services__card">
+                    <a href="products.html">
+                    <div class="services__image" data-aos="zoom-out" data-aos-duration="1000">
+                        <img src="Images/Products1.jpeg" alt="image" class="services__img">
+                    </div>
+
+                    <div class="services__content">
+                        <h2 class="services__title">Cleaning Products</h2>
+
+                        <p class="services__description">
+                            Washing powders effectively remove dirt, 
+                            stains, and odors from clothes, ensuring 
+                            cleanliness and hygiene. 
+
+ 
+                        </p>
+                    </div>
+                </a>
+                </article>
+
+
+               
+
+                
+            </div>
+        </section>
+        
+
+
+        <!-- ============ OFFERS ================ -->
+        <section class="services section" id="offers">
+            <h3 class="section__title-1">
+                <span>Offers.</span></h3>
+
+                <div class="services__container container grid">
+                    
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-left" data-aos-duration="2000">
+                            <img src="List_Items/Offers/Vegetable & Fruits.webp" alt="image" class="services__img">
+                        </div>
+                    </div>
+
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-left" data-aos-duration="2000">
+                            <img src="List_Items/Offers/Fruits.webp" alt="image" class="services__img" class="cat-img">
+                        </div>
+                    </div>
+                
+
+                
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-left" data-aos-duration="2000">
+                            <img src="List_Items/Offers/Cuts & Excotics.webp" alt="image" class="services__img">
+                        </div>
+                    </div>
+                
+
+            
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-right" data-aos-duration="2000">
+                            <img src="List_Items/Offers/Cleaners.webp" alt="image" class="services__img">
+    
+                        </div>
+                    </div>
+
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-right" data-aos-duration="2000">
+                            <img src="List_Items/Offers/detergent.webp" alt="image" class="services__img">
+                        </div>
+                    </div>
+
+
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-right" data-aos-duration="2000">
+                            <img src="List_Items/Offers/Freshers.webp" alt="image" class="services__img">
+                        </div>
+                    </div>
+               
+
+                
+                
+                   
+
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-left" data-aos-duration="2000">
+                            <img src="List_Items/Offers/Pasta.webp" alt="image" class="services__img">
+                        </div>
+                    </div>
+
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-left" data-aos-duration="2000">
+                            <img src="List_Items/Offers/Snack.webp" alt="image" class="services__img" class="cat-img">
+                        </div>
+                    </div>
+                
+
+                
+                    <div class="services__card" data-category="vegetables">
+                        <div class="services__image" data-aos="fade-left" data-aos-duration="2000">
+                            <img src="List_Items/Offers/Moring Starters.webp" alt="image" class="services__img">
+                        </div>
+                    </div>
+
+
+                </div>
+
+        </section>
+
+        
+
+        <!-- CONTACT -->
+        <section class="contact section" id="contact">
+            <div class="contact__container container grid">
+                <div class="contact__data">
+                    <h2 class="section__title-2">
+                        <span>Contact Me.</span>
+                    </h2>
+
+                    <p class="contact__description-1">
+                        I will read all emails. Send me any 
+                        message you want and I'll get back to you.
+                    </p>
+
+                    <p class="contact__description-2">
+                        I need your <b>Name</b> and <b>Email Address</b>, but 
+                        you won't receive anything other than your reply.
+                    </p>
+
+                    <!-- <div class="geometric-box"></div> -->
+                </div>
+
+                <div class="contact__mail">
+                    <h2 class="contact__title">
+                        Send Me A Message
+                    </h2>
+                    <form class="contact__form" id="contact-form">
+                        <div class="contact__group">
+                            <div class="contact__box">
+                                <input type="text" name="user_name" class="contact__input" id="name" required placeholder="First Name">
+                                <label for="name" class="contact__label">First Name</label>
+                            </div>
+
+                            <div class="contact__box">
+                                <input type="email" name="user_email" class="contact__input" id="email" required placeholder="Email Address">
+                                <label for="email" class="contact__label">Email Address</label>
+                            </div>
+                        </div>
+                        
+
+                            <div class="contact__box">
+                                <input type="text" name="user_subject" class="contact__input" id="subject" required placeholder="Subject">
+                                <label for="subject" class="contact__label">Subject</label>
+                            </div>
+
+                            <div class="contact__box contact__area">
+                                <textarea name="user_message" id="message" class="contact__input" required placeholder="Message"></textarea>
+                                <label for="message" class="contact__label">Message</label>
+                            </div>
+                        
+
+                            <p class="contact__message" id="contact-message"></p>
+                        
+
+                            <button type="submit" class="contact__button button">
+                                <i class="ri-send-plane-line"></i>Send Message
+                            </button>
+                        
+                    </form>
+                </div>
+
+                <div class="contact__social">
+                    <img src="img/curved-arrow.svg" alt="" class="contact__social-arrow">
+
+                    <!-- <div class="contact__social-data">
+                        <div>
+                            <p class="contact__social-description-1">
+                                Does not send emails
+                            </p>
+
+                            <p class="contact__social-description-2">
+                                Write me on my social networks
+                            </p>
+                        </div>
+
+
+                        <div class="contact__social-links">
+                            <a href="" target="_blank" class="contact__social-link">
+                                <i class="ri-twitter-x-line"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/" target="_blank" class="contact__social-link">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+
+                            <a href="www.linkedin.com/in/techysms" target="_blank" class="contact__social-link">
+                                <i class="ri-linkedin-box-line"></i>
+                            </a>
+                        </div>
+                    </div> -->
+
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <ul class="footer__links">
+                <li>
+                    <a href="#lists" class="footer__link">lists</a>
+                </li>
+
+                <li>
+                    <a href="#services" class="footer__link">services</a>
+                </li>
+            </ul>
+
+            <span class="footer__copy">
+               &#169; all Rights Reserved By 
+                <a href="">Basketo</a>
+            </span>
+        </div>
+    </footer>
+
+    <!-- SCROLL UP -->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-s-line"></i>
+    </a>
+
+
+    
+
+    <script src="js/scrollreveal.min.js"></script>
+
+
+    <!--==============EMAIL JS================  -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+
+    <!-- Javascript aos animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    
+    <!-- Initailize aos -->
+    <script>
+        AOS.init();
+      </script>
+
+
+    <!-- ============== MAIN JS=============== -->
+    <script src="js/main.js"></script>
+</body>
+</html>

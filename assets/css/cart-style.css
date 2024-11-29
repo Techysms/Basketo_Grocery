@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap');
+
+/* ==============VARIABLES CSS================ */
+:root {
+    --header-height: 3.5rem;
+  
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: hsl(14, 98%, 50%);
+    --black-color: hsl(0, 0%, 0%);
+    --black-color-light: hsl(0, 0%, 40%);
+    --white-color: hsl(0, 0%, 95%);
+    --title-color: hsl(0, 0%, 0%);
+    --text-color: hsl(0, 0%, 36%);
+    --text-color-light: hsl(0, 0%, 64%);
+    --body-color: hsl(0, 0%, 87%);
+    --container-color: hsl(0, 0%, 83%);
+  
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Bai Jamjuree", sans-serif;
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 1.75rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+  
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+  
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+  }
+body {
+    /* background-image: url('Images/shopping-cart-full-with-groceries-dark-backgrounds.jpg'); */
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-attachment: scroll; */
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px;
+    background-color: var(--body-color); /* Optional: Adjust background */
+    color: white; /* Optional: Adjust text color */
+}
+.header a {
+    margin-left: 100px;
+}
+
+.nav__list {
+    display: flex; /* Enable flexbox layout */
+    list-style: none; /* Remove default list styles */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.nav__item {
+    margin-right: 30px; 
+    /* Add spacing between items */
+}
+
+.nav__link {
+    text-decoration: none; /* Remove underline from links */
+    color: var(--black-color); /* Adjust link color */
+    display: flex; /* Align icons and text */
+    align-items: center;
+    gap: 5px; /* Add space between icon and text */
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.nav__item:hover {
+    text-decoration: underline;
+}
+
+.nav__link:hover {
+    text-decoration: underline; /* Optional: Change color on hover */
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav__logo-name {
+    font-weight: var(--font-bold);
+    color: var(--black-color);
+}
+.nav__logo-circle,
+.nav__toggle {
+    width: 32px;
+    height: 32px;
+    background-color: var(--black-color);
+    color: white;
+    display: grid;
+    place-items: center;
+}
+.nav__logo-circle {
+    border-radius: 50%;
+}
+
+
+
+.cart-container {
+    background: transparent;
+    margin: 20px auto;
+    padding: 20px;
+    /* background: white; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 800px;
+}
+
+.cart-section h2 {
+    color: var(--white-color);
+    font-weight: var(--font-bold);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+}
+
+.cart-table th {
+    background-color: #f2f2f2;
+    color: var(--text-color);
+}
+
+.cart-summary {
+    color: var(--white-color);
+    font-weight: var(--font-bold);
+    text-align: right;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.cartItems {
+    border: 1px solid #ddd;
+    color: var(--text-color);
+}
+
+.btn-print {
+    display: block;
+    align-items: canter;
+    width: 15%;
+    padding: 10px;
+    background-color: var(--body-color);
+    color: var(--black-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-print:hover {
+    background-color: var(--text-color);
+}
+
+.footer {
+    text-align: center;
+    background-color: var(--body-color);
+    color: var(--biggest-font-size);
+    font-weight: var(--font-bold);
+    padding: 10px;
+    margin-top: 325px;
+}
+
+
+@media screen and (max-width: 340px) {
+    .header, .footer {
+        padding: 14px;
+        width: 120%;
+    }
+     .btn-print {
+        margin-left: 100px;
+        align-items: center;
+        width: 50%;
+    }
+    .cart-table {
+        font-weight: 600;
+        width: 100%;
+    }
+    
+}
+
+@media only screen and (min-width: 340px) and (max-width: 576px) {
+    .header {
+        align-content: center;
+    }.btn-print {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 576px){
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1150px) {
+}

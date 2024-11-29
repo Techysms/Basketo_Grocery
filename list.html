@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" crossorigin="">
+
+    <title>Basketo || Grocery List</title>
+
+    <!-- Cascading Style Sheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    
+  <main class="for aa"> 
+
+    <div class="head">
+        
+        <header class="high">
+
+            <div class="wrapper container">
+                <div class="container">
+                    <div class="sub-container">
+                        <div class="total-amount-container">
+                            <h3>Budget</h3>
+                            <!-- <p class="hide error" id="budget-error">Value cannot be empty or negative.</p> -->
+                            <input type="number" id="total-amount" placeholder="Enter Total Amount...">
+                            <button class="submit" id="total-amount-button">SET</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div id="budget-message"></div> -->
+        </header>
+
+        <header class="balance-header">
+            <div>
+                <h5>Budget Set</h5>
+                <span id="balance">Rs.0</span>
+            </div>
+
+            <div>
+                <h5>Expenses</h5>
+                <span id="expense">Rs.0</span>
+            </div>
+        </header>
+    </div>
+
+
+    
+        <section class="remaining-budget-section">
+            <h3>REMAINING BUDGET</h3>
+            <span id="remaining-budget">Rs.0</span>
+        </section>
+    <div>
+        <section>
+            <!-- <h3>ITEMS LIST</h3>
+            <ul id="transactionList"></ul>
+            <div id="status"></div> -->
+            <button id="resetButton" onclick="resetAll()"><i class="ri-close-large-fill"></i></button>
+        </section>
+    </div>
+        
+
+    <section>
+        <h3 style="color: white;">ADD ITEMS</h3>
+        <form id="transactionForm">
+            <div>
+                <div class="search-container">
+                    <label class="namee" for="name"><strong>NAME</strong></label>
+                    <div class="cart-search-container">
+                        <div class="search-btn-container">
+                            <input type="text" id="searchInput"  name="name" placeholder="Pick the Items..." style="width: 150px;" />
+                            <i id="searchButton" class="img ri-search-line"></i>
+                        </div>
+                        <a href="cart.html" class="nav__link" style="color: inherit">
+                            <i class="cart ri-shopping-cart-line"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- <button type="button" id="searchButton">Search</button> -->
+                
+            </div>
+
+            
+        </form>
+    </section>
+    
+</main>
+
+<section id="dynamicContent" class="dynamic-content" style="margin-top: 20px;"></section>
+
+
+
+
+<script>
+    // Initialize budget and expenses
+let totalBudget = 0;
+let totalExpense = 0;
+
+// Set the budget
+document.getElementById("total-amount-button").addEventListener("click", () => {
+    const budgetInput = document.getElementById("total-amount").value.trim();
+    if (budgetInput === "" || budgetInput <= 0) {
+        alert("Please enter a valid budget.");
+        return;
+    }
+    totalBudget = parseInt(budgetInput);
+    totalExpense = 0; // Reset expenses
+    updateBudgetUI();
+});
+
+// Update budget, expenses, and remaining budget UI
+function updateBudgetUI() {
+    document.getElementById("balance").textContent = `Rs.${totalBudget}`;
+    document.getElementById("expense").textContent = `Rs.${totalExpense}`;
+    document.getElementById("remaining-budget").textContent = `Rs.${totalBudget - totalExpense}`;
+}
+
+// Add event listeners for "Add to Cart" buttons
+function initializeIceCreamEvents() {
+    document.querySelectorAll('.quantity-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const quantityInput = this.closest('.quantity-container').querySelector('.quantity-input');
+            let currentQuantity = parseInt(quantityInput.value);
+
+            if (this.classList.contains('increase-btn')) {
+                currentQuantity++;
+            } else if (this.classList.contains('decrease-btn') && currentQuantity > 1) {
+                currentQuantity--;
+            }
+
+            quantityInput.value = currentQuantity;
+        });
+    });
+
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const productCard = button.closest('.services__card');
+            const productName = productCard.querySelector('.services__title').innerText;
+            const priceText = productCard.querySelector('.services__price').innerText;
+            const quantity = parseInt(productCard.querySelector('.quantity-input').value);
+
+            const pricePerUnit = parseInt(priceText.match(/\d+/)[0]); // Extract price
+            const totalPrice = pricePerUnit * quantity;
+
+            if (totalPrice + totalExpense > totalBudget) {
+                alert(`You cannot buy ${quantity} kg of ${productName}. Reduce the quantity or adjust your budget.`);
+                return;
+            }
+
+            totalExpense += totalPrice; // Update total expense
+            updateBudgetUI(); // Update UI
+
+            const cartItems = JSON.parse(localStorage.getItem("cartData")) || [];
+            cartItems.push({
+            name: productName,
+            quantity: quantity,
+            pricePerUnit: pricePerUnit,
+            totalPrice: totalPrice
+        });
+        localStorage.setItem("cartData", JSON.stringify(cartItems));
+
+            alert(`Added ${quantity} kg of ${productName} (${priceText}) to the cart!`);
+        });
+    });
+}
+
+// Reset all
+function resetAll() {
+    totalBudget = 0;
+    totalExpense = 0;
+    document.getElementById("total-amount").value = "";
+    updateBudgetUI();
+    alert("Budget and expenses have been reset.");
+}
+
+// Initialize events for the dynamically loaded content
+document.getElementById("searchButton").addEventListener("click", () => {
+    const searchInput = document.getElementById("searchInput").value.toLowerCase().trim();
+    const dynamicContent = document.getElementById("dynamicContent");
+
+    const categoryMap = {
+        "icecream": "icecream.html",
+        "fruits": "fruits.html",
+        "nuts": "nuts.html",
+        "masalas": "masalas.html",
+        "cookies" : "cookies.html",
+        "snacks" : "snacks.html",
+        "fresh vegetables" : "vegetables.html",
+        "pulses" : "pulses.html",
+        "Cleaning Products" : "products.html"
+    };
+
+    if (categoryMap[searchInput]) {
+        const htmlFile = categoryMap[searchInput];
+
+        fetch(htmlFile)
+    .then(response => {
+        if (!response.ok) throw new Error("Failed to fetch the file.");
+        return response.text();
+    })
+    .then(data => {
+        dynamicContent.innerHTML = data;
+        initializeIceCreamEvents();
+        document.documentElement.scrollTop = 0; // Scroll to the top after loading
+    })
+    .catch(error => {
+        console.error(error);
+        dynamicContent.innerHTML = "<p>Error loading content. Please try again.</p>";
+    });
+    } else {
+        dynamicContent.innerHTML = `<p>No results found for "${searchInput}". Please try again.</p>`;
+    }
+});
+
+
+</script>
+    <!-- Javascript -->
+    <script src="js/main.js"></script>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" crossorigin="">
+    <title>Basketo || Shopping Cart</title>
+    <link rel="stylesheet" href="assets/css/cart-style.css">
+</head>
+<body style="background-image: url('Images/shopping-cart-full-with-groceries-dark-backgrounds.jpg'); background-size: cover; background-position: center;">
+    <header class="header">
+        <a href="#" class="nav__logo">
+            <span class="nav__logo-circle"><i class="ri-shopping-cart-line"></i></span>
+            <span class="nav__logo-name">Basketo</span>
+        </a>
+        <!-- <ul class="nav__list">
+            <li class="nav__item">
+                <a href="index.html" class="nav__link active-link"><i class="ri-home-8-line"></i>Home</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="list.html" class="nav__link"><i class="ri-money-rupee-circle-line"></i>Budget</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="index.html#offers" class="nav__link"><i class="ri-discount-percent-line"></i>Offers</a>
+            </li>
+
+            <li class="nav__item">
+                <a href="index.html#contact" class="nav__link"><i class="ri-contacts-line"></i>Contact</a>
+            </li>         -->
+    </header>
+
+    <main class="cart-container">
+        <section class="cart-section">
+            <h2>Shopping Cart<i class="ri-shopping-cart-line"></i></h2>
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price (Rs.)</th>
+                        <th>Total Price (Rs.)</th>
+                        <th>Action</th> <!-- Added Action Column -->
+                    </tr>
+                </thead>
+                <tbody id="cartItems" style="color: white; font-weight: 600;">
+                    <!-- Dynamically loaded cart items will appear here -->
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <p><strong>Total Expense:</strong> <span id="totalExpense">Rs.0</span></p>
+            </div>
+            <button id="printReceiptButton" class="btn-print">Print Receipt</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Basketo. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+
+        
+        // Mock data for cart items
+        const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+
+        // Load cart items into the table
+        const cartItemsTable = document.getElementById("cartItems");
+        const totalExpenseDisplay = document.getElementById("totalExpense");
+        let totalExpense = 0;
+
+        // Function to update the total expense
+        function updateTotalExpense() {
+            totalExpenseDisplay.textContent = `Rs.${totalExpense}`;
+        }
+
+        // Function to render cart items
+        function renderCartItems() {
+            cartItemsTable.innerHTML = ''; // Clear the current table
+            totalExpense = 0; // Reset total expense
+
+            cartData.forEach((item, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity} kg</td>
+                    <td>${item.pricePerUnit}</td>
+                    <td>${item.totalPrice}</td>
+                    <td><button class="remove-btn" data-index="${index}">🗑️</button></td>
+                `;
+                cartItemsTable.appendChild(row);
+                totalExpense += item.totalPrice;
+            });
+
+            // Update the total expense after rendering
+            updateTotalExpense();
+
+            // Re-attach the remove button event listeners
+            attachRemoveListeners();
+        }
+
+        // Attach event listeners to remove buttons
+        function attachRemoveListeners() {
+            const removeButtons = document.querySelectorAll('.remove-btn');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const itemIndex = this.getAttribute('data-index');
+                    
+                    // Remove the item from the cart data
+                    cartData.splice(itemIndex, 1);
+                    localStorage.setItem("cartData", JSON.stringify(cartData)); // Save updated cart to localStorage
+                    
+                    // Re-render the cart table
+                    renderCartItems(); // This will update the table and total expense
+                });
+            });
+        }
+
+        // Initial render of cart items
+        renderCartItems();
+
+        // Print receipt functionality
+        document.getElementById("printReceiptButton").addEventListener("click", () => {
+            window.print();
+        });
+    </script>
+</body>
+</html>
